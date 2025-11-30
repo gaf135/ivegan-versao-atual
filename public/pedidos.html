@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos - iVegan</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pedidos.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<body>
+    <!--Navbar-->
+    <div id="navbar-container"></div>
+
+    <!-- Sessão Pedidos -->
+    <main class="main-content">
+        <section class="orders-section">
+            <h1 class="intro-text">Meus Pedidos</h1>
+            <div id="orders-container" class="orders-container">
+                <div class="loading-container" style="text-align: center; padding: 40px;">
+                    <div class="loading"></div>
+                    <p style="margin-top: 15px; color: var(--gray-medium);">Carregando seus pedidos...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--Footer-->
+    <div id="footer-container"></div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/auth-navbar.js"></script>
+    <script src="js/pedidos.js"></script>
+</body>
+
+</html>

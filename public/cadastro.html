@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Ivegan</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/cadastro.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+    <main class="main-content container">
+        <div class="auth-container">
+            <form id="registerForm" class="auth-form">
+                <div class="auth-header">
+                    <h1>Crie sua conta</h1>
+                    <p>Preencha seus dados para começar</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <span class="error-message" id="nomeError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-row" style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+                        <span class="error-message" id="telefoneError"></span>
+                    </div>
+
+                    <div class="form-group" style="flex: 1;">
+                        <label for="senha">Senha *</label>
+                        <input type="password" id="senha" name="senha" required minlength="6">
+                        <span class="error-message" id="senhaError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmarSenha">Confirmar Senha *</label>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                    <span class="error-message" id="confirmarSenhaError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <textarea id="endereco" name="endereco" rows="3"
+                        placeholder="Digite seu endereço completo..."></textarea>
+                    <span class="error-message" id="enderecoError"></span>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="termos" name="termos" required>
+                    <label for="termos">
+                        Concordo com os <a href="/termos" target="_blank">Termos de Uso</a> e
+                        <a href="/privacidade" target="_blank">Política de Privacidade</a> *
+                    </label>
+                    <span class="error-message" id="termosError"></span>
+                </div>
+
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    Criar Conta
+                </button>
+
+                <div id="message" class="message"></div>
+
+                <p class="auth-link">
+                    Já tem uma conta? <a href="login.html">Faça login aqui</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="js/register.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/auth-navbar.js"></script>
+</body>
+
+</html>

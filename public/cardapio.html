@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - iVegan</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/restaurante.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content container">
+        <main class="main-content container restaurant-layout">
+            <div class="restaurant-content">
+                <div id="restaurante-info">
+                    <p>Carregando...</p>
+                </div>
+                <div id="menu-container"></div>
+            </div>
+
+            <aside class="cart-sidebar">
+                <h3>Seu Pedido (<span id="cart-count">0</span>)</h3>
+                <div id="cart-items">
+                    <p class="empty-cart">Seu carrinho está vazio</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="total">Total: <span id="cart-total">R$ 0.00</span></div>
+                    <button id="btn-checkout" class="btn-primary">Finalizar Pedido</button>
+                </div>
+            </aside>
+        </main>
+    </main>
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    <script src="js/navbar.js"></script>
+    <script src="js/auth-navbar.js"></script>
+    <script src="js/cardapio.js"></script>
+</body>
+
+</html>

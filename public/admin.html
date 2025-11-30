@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - iVegan</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Navegação Principal">
+        <div class="nav-links">
+            <a href="/">Início</a>
+            <a href="/admin.html" class="active" aria-current="page">Admin</a>
+        </div>
+        <div class="auth-buttons">
+            <span id="adminWelcome">Admin</span>
+            <button id="logoutBtn" class="btn-secondary">Sair</button>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <h3>Painel Admin</h3>
+            <ul class="admin-menu">
+                <li><a href="#" data-tab="dashboard" class="active">Dashboard</a></li>
+                <li><a href="#" data-tab="usuarios">Usuários</a></li>
+                <li><a href="#" data-tab="restaurantes">Restaurantes</a></li>
+                <li><a href="#" data-tab="pratos">Pratos</a></li>
+                <li><a href="#" data-tab="pedidos">Pedidos</a></li>
+                <li><a href="#" data-tab="entregadores">Entregadores</a></li>
+                <li><a href="#" data-tab="categorias">Categorias</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard -->
+            <section id="dashboard" class="admin-tab active" aria-labelledby="dashboard-title">
+                <header class="tab-header">
+                    <h2 id="dashboard-title">Dashboard</h2>
+                </header>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total de Usuários</h3>
+                        <span id="totalUsuarios" class="stat-number">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Restaurantes</h3>
+                        <span id="totalRestaurantes" class="stat-number">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pedidos Hoje</h3>
+                        <span id="pedidosHoje" class="stat-number">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Entregadores</h3>
+                        <span id="totalEntregadores" class="stat-number">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Usuários -->
+            <section id="usuarios" class="admin-tab" aria-labelledby="usuarios-title">
+                <header class="tab-header">
+                    <h2 id="usuarios-title">Gerenciar Usuários</h2>
+                    <button id="novoUsuarioBtn" class="btn-primary">Novo Usuário</button>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Data Cadastro</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuariosTable">
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Restaurantes -->
+            <section id="restaurantes" class="admin-tab" aria-labelledby="restaurantes-title">
+                <header class="tab-header">
+                    <h2 id="restaurantes-title">Gerenciar Restaurantes</h2>
+                    <button id="novoRestauranteBtn" class="btn-primary">Novo Restaurante</button>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome Público</th>
+                                <th>CNPJ</th>
+                                <th>Categoria</th>
+                                <th>Avaliação</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="restaurantesTable">
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Pratos -->
+            <section id="pratos" class="admin-tab" aria-labelledby="pratos-title">
+                <header class="tab-header">
+                    <h2 id="pratos-title">Gerenciar Pratos</h2>
+                    <button id="novoPratoBtn" class="btn-primary">Novo Prato</button>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Restaurante</th>
+                                <th>Preço</th>
+                                <th>Tipo</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pratosTable">
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Pedidos -->
+            <section id="pedidos" class="admin-tab" aria-labelledby="pedidos-title">
+                <header class="tab-header">
+                    <h2 id="pedidos-title">Gerenciar Pedidos</h2>
+                    <button id="novoPedidoBtn" class="btn-primary">Novo Pedido</button>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuário</th>
+                                <th>Restaurante</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                                <th>Total</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedidosTable">
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Entregadores -->
+            <section id="entregadores" class="admin-tab" aria-labelledby="entregadores-title">
+                <header class="tab-header">
+                    <h2 id="entregadores-title">Gerenciar Entregadores</h2>
+                    <button id="novoEntregadorBtn" class="btn-primary">Novo Entregador</button>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Veículo</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="entregadoresTable">
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Categorias -->
+            <section id="categorias" class="admin-tab" aria-labelledby="categorias-title">
+                <header class="tab-header">
+                    <h2 id="categorias-title">Gerenciar Categorias</h2>
+                    <button id="novaCategoriaBtn" class="btn-primary">Nova Categoria</button>
+                </header>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Data Criação</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoriasTable">
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Container de Notificações (Toasts) -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Modais -->
+    <!-- Modal Usuário -->
+    <div id="userModal" class="modal" role="dialog" aria-labelledby="userModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" data-modal="userModal" aria-label="Fechar">&times;</span>
+            <h3 id="userModalTitle">Novo Usuário</h3>
+            <form id="userForm" class="modal-form">
+                <input type="hidden" id="userId">
+                <div class="form-group">
+                    <label for="userNome">Nome *</label>
+                    <input type="text" id="userNome" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email *</label>
+                    <input type="email" id="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="userTelefone">Telefone</label>
+                    <input type="text" id="userTelefone">
+                </div>
+                <div class="form-group">
+                    <label for="userEndereco">Endereço</label>
+                    <textarea id="userEndereco" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="userSenha">Senha</label>
+                    <input type="password" id="userSenha" placeholder="Deixe em branco para não alterar">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" data-modal="userModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Restaurante -->
+    <div id="restaurantModal" class="modal" role="dialog" aria-labelledby="restaurantModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" data-modal="restaurantModal" aria-label="Fechar">&times;</span>
+            <h3 id="restaurantModalTitle">Novo Restaurante</h3>
+            <form id="restaurantForm" class="modal-form">
+                <input type="hidden" id="restaurantId">
+                <div class="form-group">
+                    <label for="restaurantNomePublico">Nome Público *</label>
+                    <input type="text" id="restaurantNomePublico" required>
+                </div>
+                <div class="form-group">
+                    <label for="restaurantNomeLegal">Nome Legal *</label>
+                    <input type="text" id="restaurantNomeLegal" required>
+                </div>
+                <div class="form-group">
+                    <label for="restaurantCnpj">CNPJ *</label>
+                    <input type="text" id="restaurantCnpj" required>
+                </div>
+                <div class="form-group">
+                    <label for="restaurantTelefone">Telefone</label>
+                    <input type="text" id="restaurantTelefone">
+                </div>
+                <div class="form-group">
+                    <label for="restaurantEndereco">Endereço</label>
+                    <textarea id="restaurantEndereco" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="restaurantCategoria">Categoria</label>
+                    <select id="restaurantCategoria">
+                        <option value="restaurante">Restaurante</option>
+                        <option value="mercado">Mercado</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" data-modal="restaurantModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Prato -->
+    <div id="pratoModal" class="modal" role="dialog" aria-labelledby="pratoModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" data-modal="pratoModal" aria-label="Fechar">&times;</span>
+            <h3 id="pratoModalTitle">Novo Prato</h3>
+            <form id="pratoForm" class="modal-form">
+                <input type="hidden" id="pratoId">
+                <div class="form-group">
+                    <label for="pratoRestauranteId">Restaurante *</label>
+                    <select id="pratoRestauranteId" required>
+                        <option value="">Selecione um restaurante</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pratoCategoriaId">Categoria</label>
+                    <select id="pratoCategoriaId">
+                        <option value="">Sem categoria</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pratoNome">Nome *</label>
+                    <input type="text" id="pratoNome" required>
+                </div>
+                <div class="form-group">
+                    <label for="pratoDescricao">Descrição</label>
+                    <textarea id="pratoDescricao" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pratoPreco">Preço *</label>
+                    <input type="number" id="pratoPreco" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="pratoTipo">Tipo *</label>
+                    <select id="pratoTipo" required>
+                        <option value="vegano">Vegano</option>
+                        <option value="vegetariano">Vegetariano</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pratoImagem">URL da Imagem</label>
+                    <input type="url" id="pratoImagem">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" data-modal="pratoModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal Entregador -->
+    <div id="entregadorModal" class="modal" role="dialog" aria-labelledby="entregadorModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" data-modal="entregadorModal" aria-label="Fechar">&times;</span>
+            <h3 id="entregadorModalTitle">Novo Entregador</h3>
+            <form id="entregadorForm" class="modal-form">
+                <input type="hidden" id="entregadorId">
+                <div class="form-group">
+                    <label for="entregadorNome">Nome *</label>
+                    <input type="text" id="entregadorNome" required>
+                </div>
+                <div class="form-group">
+                    <label for="entregadorCpf">CPF *</label>
+                    <input type="text" id="entregadorCpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="entregadorTipoVeiculo">Tipo de Veículo *</label>
+                    <select id="entregadorTipoVeiculo" required>
+                        <option value="motocicleta">Motocicleta</option>
+                        <option value="carro">Carro</option>
+                        <option value="bicicleta">Bicicleta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="entregadorPlaca">Placa</label>
+                    <input type="text" id="entregadorPlaca">
+                </div>
+                <div class="form-group">
+                    <label for="entregadorStatus">Status</label>
+                    <select id="entregadorStatus">
+                        <option value="disponivel">Disponível</option>
+                        <option value="indisponivel">Indisponível</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" data-modal="entregadorModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Categoria -->
+    <div id="categoriaModal" class="modal" role="dialog" aria-labelledby="categoriaModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" data-modal="categoriaModal" aria-label="Fechar">&times;</span>
+            <h3 id="categoriaModalTitle">Nova Categoria</h3>
+            <form id="categoriaForm" class="modal-form">
+                <input type="hidden" id="categoriaId">
+                <div class="form-group">
+                    <label for="categoriaNome">Nome *</label>
+                    <input type="text" id="categoriaNome" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoriaDescricao">Descrição</label>
+                    <textarea id="categoriaDescricao" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="categoriaIcone">Ícone</label>
+                    <input type="text" id="categoriaIcone" placeholder="Nome do ícone (ex: hortifruti)">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" data-modal="categoriaModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Detalhes do Pedido -->
+    <div id="pedidoModal" class="modal" role="dialog" aria-labelledby="pedidoModalTitle" aria-modal="true">
+        <div class="modal-content large-modal">
+            <span class="close" data-modal="pedidoModal" aria-label="Fechar">&times;</span>
+            <h3 id="pedidoModalTitle">Detalhes do Pedido</h3>
+
+            <div class="pedido-details">
+                <div class="detail-section">
+                    <h4>Informações do Pedido</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <strong>ID:</strong> <span id="pedidoDetailId">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Status:</strong> <span id="pedidoDetailStatus">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Data:</strong> <span id="pedidoDetailData">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Total:</strong> R$ <span id="pedidoDetailTotal">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Cliente</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <strong>Nome:</strong> <span id="pedidoDetailCliente">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Telefone:</strong> <span id="pedidoDetailClienteTelefone">-</span>
+                        </div>
+                        <div class="detail-item full-width">
+                            <strong>Endereço de Entrega:</strong> <span id="pedidoDetailEndereco">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Restaurante</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <strong>Nome:</strong> <span id="pedidoDetailRestaurante">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Telefone:</strong> <span id="pedidoDetailRestauranteTelefone">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Entregador</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <strong>Nome:</strong> <span id="pedidoDetailEntregador">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Status:</strong> <span id="pedidoDetailEntregadorStatus">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Itens do Pedido</h4>
+                    <div id="pedidoItensList" class="itens-list">
+                        <!-- Itens serão carregados aqui -->
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Pagamento</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <strong>Método:</strong> <span id="pedidoDetailPagamentoMetodo">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Status:</strong> <span id="pedidoDetailPagamentoStatus">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Valor:</strong> R$ <span id="pedidoDetailPagamentoValor">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" data-modal="pedidoModal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Status do Pedido -->
+    <div id="pedidoStatusModal" class="modal" role="dialog" aria-labelledby="pedidoStatusModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" data-modal="pedidoStatusModal" aria-label="Fechar">&times;</span>
+            <h3 id="pedidoStatusModalTitle">Alterar Status do Pedido</h3>
+            <form id="pedidoStatusForm" class="modal-form">
+                <input type="hidden" id="pedidoStatusId">
+                <div class="form-group">
+                    <label for="pedidoStatusSelect">Novo Status</label>
+                    <select id="pedidoStatusSelect" required>
+                        <option value="em preparação">Em preparação</option>
+                        <option value="completo">Completo</option>
+                        <option value="entregue">Entregue</option>
+                        <option value="pago">Pago</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pedidoEntregadorSelect">Atribuir Entregador</label>
+                    <select id="pedidoEntregadorSelect">
+                        <option value="">Selecionar entregador</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Atualizar</button>
+                    <button type="button" class="btn-secondary" data-modal="pedidoStatusModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal Novo Pedido -->
+    <div id="novoPedidoModal" class="modal" role="dialog" aria-labelledby="novoPedidoModalTitle" aria-modal="true">
+        <div class="modal-content large-modal">
+            <span class="close" data-modal="novoPedidoModal" aria-label="Fechar">&times;</span>
+            <h3 id="novoPedidoModalTitle">Novo Pedido</h3>
+            <form id="novoPedidoForm" class="modal-form">
+                <!-- Informações Básicas -->
+                <div class="form-section">
+                    <h4>Informações do Pedido</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="novoPedidoUsuario">Cliente *</label>
+                            <select id="novoPedidoUsuario" required>
+                                <option value="">Selecione um cliente</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="novoPedidoRestaurante">Restaurante *</label>
+                            <select id="novoPedidoRestaurante" required>
+                                <option value="">Selecione um restaurante</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="novoPedidoEndereco">Endereço de Entrega *</label>
+                        <textarea id="novoPedidoEndereco" rows="3" required
+                            placeholder="Digite o endereço completo para entrega"></textarea>
+                    </div>
+                </div>
+
+                <!-- Itens do Pedido -->
+                <div class="form-section">
+                    <h4>Itens do Pedido</h4>
+                    <div id="pratosDisponiveis" class="pratos-container">
+                        <div class="pratos-loading">Carregando pratos...</div>
+                    </div>
+                    <div id="itensSelecionados" class="itens-selecionados">
+                        <h5>Itens Adicionados:</h5>
+                        <div id="listaItensPedido" class="lista-itens">
+                            <div class="empty-message">Nenhum item adicionado</div>
+                        </div>
+                        <div class="resumo-pedido">
+                            <div class="total-pedido">
+                                <strong>Total: R$ <span id="totalPedido">0.00</span></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagamento -->
+                <div class="form-section">
+                    <h4>Pagamento</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="novoPedidoMetodoPagamento">Método de Pagamento *</label>
+                            <select id="novoPedidoMetodoPagamento" required>
+                                <option value="cartao">Cartão de Crédito/Débito</option>
+                                <option value="pix">PIX</option>
+                                <option value="dinheiro">Dinheiro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="novoPedidoStatusPagamento">Status do Pagamento</label>
+                            <select id="novoPedidoStatusPagamento">
+                                <option value="pendente">Pendente</option>
+                                <option value="pago">Pago</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entregador -->
+                <div class="form-section">
+                    <h4>Entrega</h4>
+                    <div class="form-group">
+                        <label for="novoPedidoEntregador">Entregador (Opcional)</label>
+                        <select id="novoPedidoEntregador">
+                            <option value="">Selecione um entregador</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Criar Pedido</button>
+                    <button type="button" class="btn-secondary" data-modal="novoPedidoModal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

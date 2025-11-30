@@ -1,0 +1,213 @@
+.cards-me{
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    padding: 80px;
+    padding-bottom: 0px;
+    gap: 30px;
+  }
+
+  .card-mercado{
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.356);
+    border-radius: 5px;
+    box-shadow: 0 0 10px 5px #205a00a8;
+  }
+  
+  .card-mercado-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6d9826;
+    color: white;
+    border-radius: 5px;
+    gap: 35px;
+  }
+
+  .card-mercado-left img{
+    display: flex;
+    padding: 25px;
+    gap: 35px;
+  }
+
+  .card-mercado-left button {
+    background-color: #205a00;
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    color: white;
+    font-family: 'Poppins';
+    font-weight: 1000;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .card-mercado-left h1{
+    padding: 10px;
+    margin: 0%;
+  }
+
+  .card-mercado-left-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 15px;
+    gap: 90px;
+  }
+
+  .card-mercado-right{
+    display: none;
+  }
+
+  .card-entrega{
+    display: flex;
+    justify-content: end;
+    background-color: rgba(255, 255, 255, 0.356);
+    border-radius: 5px;
+    box-shadow: 0 0 10px 5px #205a00a8;
+  }
+
+  .card-entrega-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(253, 75, 75);
+    color: white;
+    border-radius: 5px;
+    gap: 35px;
+  }
+
+  .card-entrega-right img{
+    display: flex;
+    padding: 35px;
+    gap: 35px;
+  }
+
+  .card-entrega-right button {
+    background-color: #6b0e0e;
+    border-style: none;
+    border-radius: 20px;
+    display: flex;
+    color: white;
+    font-family: 'Poppins';
+    font-weight: 1000;
+    text-decoration: none;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .card-entrega-right h1{
+    padding: 10px;
+    margin: 0%;
+  }
+
+  .card-entrega-right-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15px;
+    gap: 90px;
+  }
+
+  .card-entrega-left{
+    display: none;
+  }
+
+  .cards-re{
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    padding: 80px;
+    gap: 30px;
+  }
+
+  .card-restaurante{
+    display: flex;
+    flex-direction: column;
+    color: white;    
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 200px;
+    width: 445px;
+  }
+
+  .card-restaurante h1{
+    color: white;
+    text-decoration: none;
+    text-shadow: 
+    -1px -1px 0 #205a00,
+     1px -1px 0 #205a00,
+    -1px  1px 0 #205a00,
+     1px  1px 0 #205a00;
+    text-align: center;
+  }
+
+  .card-restaurante p {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .card-restaurante-texto{
+    background-color: rgba(255, 255, 255, 0.356);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 5px 10px 5px #205a00;
+  }
+
+  .card-entregador{
+    display: flex;
+    flex-direction: column;
+    color: white;    
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 200px;
+    width: 445px; 
+  }
+
+  .card-entregador h1{
+    color: white;
+    text-decoration: none;
+    text-shadow: 
+    -1px -1px 0 #205a00,
+     1px -1px 0 #205a00,
+    -1px  1px 0 #205a00,
+     1px  1px 0 #205a00;
+    text-align: center;
+  }
+
+  .card-entregador p {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .card-entregador-texto{
+    background-color: rgba(255, 255, 255, 0.356);
+    border-radius: 10px;
+    border-top-left-radius: 0 ;
+    border-top-right-radius: 0;
+    box-shadow: 0 5px 10px 5px #205a00;
+  }
+
+  @media (max-width: 1030px) {
+
+    .cards-me{
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+
+  @media (max-width: 950px){
+
+    .cards-re{
+      display: flex;
+      flex-direction: column;
+    }
+
+  }

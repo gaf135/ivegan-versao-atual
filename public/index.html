@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - iVegan</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Carrossel -->
+        <div class="carousel-simple">
+            <div class="carousel-track">
+                <div class="carousel-slide active">
+                    <img src="img/carrossel/1.jpg" alt="Slide 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="img/carrossel/2.jpg" alt="Slide 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="img/carrossel/3.jpg" alt="Slide 3">
+                </div>
+            </div>
+
+            <!-- Botões de Navegação -->
+            <button class="carousel-prev" aria-label="Slide anterior">‹</button>
+            <button class="carousel-next" aria-label="Próximo slide">›</button>
+
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0" aria-label="Ir para slide 1"></span>
+                <span class="indicator" data-slide="1" aria-label="Ir para slide 2"></span>
+                <span class="indicator" data-slide="2" aria-label="Ir para slide 3"></span>
+            </div>
+        </div>
+
+        <!-- Cards Mercado e Entrega -->
+        <div class="cards-me">
+            <div class="card-mercado">
+                <div class="card-mercado-left">
+                    <img src="img/carrinho.png" alt="Carrinho de compras">
+                    <div class="card-mercado-left-items">
+                        <h1>Mercado</h1>
+                        <a href="mercado.html">
+                            <button>
+                                Ver opções
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
+                                    fill="#ffff">
+                                    <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                                </svg>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-mercado-right">
+                    <h1>Adicione itens ao seu carrinho:</h1>
+                    <p>Adicione itens de sua preferência ao seu carrinho e realize uma compra. Seus itens terão o valor
+                        contabilizado automaticamente ao serem adicionados ao carrinho. Escolha a sua forma de pagamento
+                        e seu endereço de entrega e seu pedido estará pronto para o envio.</p>
+                </div>
+            </div>
+
+            <div class="card-entrega">
+                <div class="card-entrega-left">
+                    <h1>Faça um pedido para entrega</h1>
+                    <p>Faça um pedido para pronta entrega. Seus itens terão o valor contabilizado automaticamente ao
+                        serem adicionados ao carrinho. Escolha a sua forma de pagamento e seu endereço de entrega e seu
+                        pedido estará pronto para o envio.</p>
+                </div>
+                <div class="card-entrega-right">
+                    <div class="card-entrega-right-items">
+                        <h1>Restaurantes</h1>
+                        <a href="restaurante.html">
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
+                                    fill="#ffff">
+                                    <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                                </svg>
+                                Ver opções
+                            </button>
+                        </a>
+                    </div>
+                    <img src="img/hamburger.png" alt="Entrega">
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Scroll Restaurantes -->
+        <section class="restaurantes-section">
+            <div class="slider-title">
+                <h1>Principais Restaurantes:</h1>
+            </div>
+            <div class="wrapper-container">
+                <div class="wrapper">
+                    <ul class="card-carousel">
+                        <li class="card">
+                            <div class="img"><img src="img/roy.jpg" alt="Restaurante"></div>
+                            <h2>Restaurante</h2>
+                            <span>1</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="img/roy.jpg" alt="Restaurante"></div>
+                            <h2>Restaurante</h2>
+                            <span>2</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="img/roy.jpg" alt="Restaurante"></div>
+                            <h2>Restaurante</h2>
+                            <span>3</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="img/roy.jpg" alt="Restaurante"></div>
+                            <h2>Restaurante</h2>
+                            <span>4</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="img/roy.jpg" alt="Restaurante"></div>
+                            <h2>Restaurante</h2>
+                            <span>5</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="img/roy.jpg" alt="Restaurante"></div>
+                            <h2>Restaurante</h2>
+                            <span>6</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards Cadastro -->
+        <div class="cards-re">
+            <div class="card-restaurante">
+                <h1>Cadastrar Restaurante</h1>
+                <div class="card-restaurante-texto">
+                    <p>Tem um restaurante?<br>Ótimo! Cadastre-se como restaurante e venda seus produtos aqui.</p>
+                </div>
+            </div>
+            <div class="card-entregador">
+                <h1>Cadastrar Entregador</h1>
+                <div class="card-entregador-texto">
+                    <p>Quer ser entregador?<br>Cadastre-se como entregador e comece a fazer entregas.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/auth-navbar.js"></script>
+</body>
+
+</html>

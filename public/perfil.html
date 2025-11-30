@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - iVegan</title>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <main class="main-content container">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-pic-wrapper">
+                    <img id="profilePic" src="img/default-profile.png" alt="Foto de Perfil">
+                    <label for="fileInput" class="edit-pic-btn">
+                        📷
+                    </label>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+                <h2 id="userNameDisplay">Carregando...</h2>
+                <p id="userEmailDisplay">...</p>
+            </div>
+
+            <form id="profileForm" class="profile-form">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" disabled
+                        style="background-color: #f0f0f0; cursor: not-allowed;">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone">
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <textarea id="endereco" name="endereco" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Salvar Alterações</button>
+            </form>
+            <div id="message" class="message"></div>
+        </div>
+    </main>
+
+    <style>
+        .profile-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+        }
+
+        .profile-pic-wrapper img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-green);
+        }
+
+        .edit-pic-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--dark-green);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .edit-pic-btn:hover {
+            transform: scale(1.1);
+            background: var(--medium-green);
+        }
+
+        .profile-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .profile-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+
+        .profile-form input,
+        .profile-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const form = document.getElementById('profileForm');
+            const messageDiv = document.getElementById('message');
+            const fileInput = document.getElementById('fileInput');
+            const profilePic = document.getElementById('profilePic');
+
+            // Carregar dados do usuário
+            try {
+                const response = await fetch('/api/perfil', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.ok) {
+                    const user = await response.json();
+                    document.getElementById('nome').value = user.nome;
+                    document.getElementById('email').value = user.email;
+                    document.getElementById('telefone').value = user.telefone || '';
+                    document.getElementById('endereco').value = user.endereco || '';
+
+                    document.getElementById('userNameDisplay').textContent = user.nome;
+                    document.getElementById('userEmailDisplay').textContent = user.email;
+
+                    if (user.foto_perfil) {
+                        profilePic.src = user.foto_perfil;
+                    }
+                } else {
+                    throw new Error('Falha ao carregar perfil');
+                }
+            } catch (error) {
+                console.error(error);
+                messageDiv.className = 'message error';
+                messageDiv.textContent = 'Erro ao carregar dados do perfil';
+            }
+
+            // Upload de foto
+            fileInput.addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('foto', file);
+
+                try {
+                    const response = await fetch('/api/perfil/foto', {
+                        method: 'POST',
+                        headers: { 'Authorization': `Bearer ${token}` },
+                        body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        profilePic.src = data.fotoUrl;
+                        // Atualizar localStorage se necessário
+                        const user = JSON.parse(localStorage.getItem('user'));
+                        user.foto_perfil = data.fotoUrl;
+                        localStorage.setItem('user', JSON.stringify(user));
+
+                        messageDiv.className = 'message success';
+                        messageDiv.textContent = 'Foto atualizada com sucesso!';
+                        setTimeout(() => messageDiv.textContent = '', 3000);
+                    } else {
+                        throw new Error(data.error);
+                    }
+                } catch (error) {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = error.message || 'Erro ao enviar foto';
+                }
+            });
+
+            // Atualizar dados
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const nome = document.getElementById('nome').value;
+                const telefone = document.getElementById('telefone').value;
+                const endereco = document.getElementById('endereco').value;
+
+                try {
+                    const response = await fetch('/api/perfil', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ nome, telefone, endereco })
+                    });
+
+                    if (response.ok) {
+                        messageDiv.className = 'message success';
+                        messageDiv.textContent = 'Perfil atualizado com sucesso!';
+                        document.getElementById('userNameDisplay').textContent = nome;
+
+                        // Atualizar localStorage
+                        const user = JSON.parse(localStorage.getItem('user'));
+                        user.nome = nome;
+                        user.telefone = telefone;
+                        user.endereco = endereco;
+                        localStorage.setItem('user', JSON.stringify(user));
+                    } else {
+                        throw new Error('Erro ao atualizar');
+                    }
+                } catch (error) {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = 'Erro ao salvar alterações';
+                }
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/auth-navbar.js"></script>
+</body>
+
+</html>

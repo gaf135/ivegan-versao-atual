@@ -1,0 +1,35 @@
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #25D366 !important;
+}
+
+.nav-link {
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #25D366;
+}
+
+.btn-primary {
+    background-color: #25D366;
+    border-color: #25D366;
+}
+
+.btn-primary:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
