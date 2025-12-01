@@ -182,6 +182,48 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
+// Registrar novo restaurante (Público)
+app.post('/api/register/restaurante', (req, res) => {
+  const { nome_publico, nome_legal, cnpj, telefone, endereco, categoria } = req.body;
+
+  if (!nome_publico || !nome_legal || !cnpj) {
+    return res.status(400).json({ error: 'Nome público, nome legal e CNPJ são obrigatórios' });
+  }
+
+  db.run(
+    'INSERT INTO restaurantes (nome_publico, nome_legal, cnpj, telefone, endereco, categoria) VALUES (?, ?, ?, ?, ?, ?)',
+    [nome_publico, nome_legal, cnpj, telefone, endereco, categoria || 'restaurante'],
+    function (err) {
+      if (err) {
+        if (err.message.includes('UNIQUE')) return res.status(409).json({ error: 'CNPJ já cadastrado' });
+        return res.status(500).json({ error: 'Erro ao criar restaurante' });
+      }
+      res.status(201).json({ message: 'Restaurante cadastrado com sucesso', id: this.lastID });
+    }
+  );
+});
+
+// Registrar novo entregador (Público)
+app.post('/api/register/entregador', (req, res) => {
+  const { nome, cpf, tipo_veiculo, placa } = req.body;
+
+  if (!nome || !cpf || !tipo_veiculo) {
+    return res.status(400).json({ error: 'Nome, CPF e tipo de veículo são obrigatórios' });
+  }
+
+  db.run(
+    'INSERT INTO entregadores (nome, cpf, tipo_veiculo, placa, status) VALUES (?, ?, ?, ?, ?)',
+    [nome, cpf, tipo_veiculo, placa, 'disponivel'],
+    function (err) {
+      if (err) {
+        if (err.message.includes('UNIQUE')) return res.status(409).json({ error: 'CPF já cadastrado' });
+        return res.status(500).json({ error: 'Erro ao criar entregador' });
+      }
+      res.status(201).json({ message: 'Entregador cadastrado com sucesso', id: this.lastID });
+    }
+  );
+});
+
 // Login
 app.post('/api/login', (req, res) => {
   const { email, senha } = req.body;
@@ -813,6 +855,74 @@ app.delete('/api/admin/entregadores/:id', authenticateToken, requireAdmin, (req,
     if (err) return res.status(500).json({ error: 'Erro ao excluir entregador' });
     if (this.changes === 0) return res.status(404).json({ error: 'Entregador não encontrado' });
     res.json({ message: 'Entregador excluído com sucesso' });
+  });
+});
+
+// ===== CRUD COMPLETO CATEGORIAS =====
+app.get('/api/admin/categorias', authenticateToken, requireAdmin, (req, res) => {
+  db.all(
+    'SELECT * FROM categorias_mercado ORDER BY nome',
+    (err, rows) => {
+      if (err) return res.status(500).json({ error: 'Erro ao buscar categorias' });
+      res.json(rows || []);
+    }
+  );
+});
+
+app.get('/api/admin/categorias/:id', authenticateToken, requireAdmin, (req, res) => {
+  const { id } = req.params;
+  db.get(
+    'SELECT * FROM categorias_mercado WHERE id = ?',
+    [id],
+    (err, row) => {
+      if (err) return res.status(500).json({ error: 'Erro ao buscar categoria' });
+      if (!row) return res.status(404).json({ error: 'Categoria não encontrada' });
+      res.json(row);
+    }
+  );
+});
+
+app.post('/api/admin/categorias', authenticateToken, requireAdmin, (req, res) => {
+  const { nome, descricao, icone } = req.body;
+
+  if (!nome) {
+    return res.status(400).json({ error: 'Nome é obrigatório' });
+  }
+
+  db.run(
+    'INSERT INTO categorias_mercado (nome, descricao, icone) VALUES (?, ?, ?)',
+    [nome, descricao, icone],
+    function (err) {
+      if (err) {
+        if (err.message.includes('UNIQUE')) return res.status(409).json({ error: 'Categoria já cadastrada' });
+        return res.status(500).json({ error: 'Erro ao criar categoria' });
+      }
+      res.status(201).json({ message: 'Categoria criada com sucesso', id: this.lastID });
+    }
+  );
+});
+
+app.put('/api/admin/categorias/:id', authenticateToken, requireAdmin, (req, res) => {
+  const { id } = req.params;
+  const { nome, descricao, icone } = req.body;
+
+  db.run(
+    'UPDATE categorias_mercado SET nome = ?, descricao = ?, icone = ? WHERE id = ?',
+    [nome, descricao, icone, id],
+    function (err) {
+      if (err) return res.status(500).json({ error: 'Erro ao atualizar categoria' });
+      if (this.changes === 0) return res.status(404).json({ error: 'Categoria não encontrada' });
+      res.json({ message: 'Categoria atualizada com sucesso' });
+    }
+  );
+});
+
+app.delete('/api/admin/categorias/:id', authenticateToken, requireAdmin, (req, res) => {
+  const { id } = req.params;
+  db.run('DELETE FROM categorias_mercado WHERE id = ?', [id], function (err) {
+    if (err) return res.status(500).json({ error: 'Erro ao excluir categoria' });
+    if (this.changes === 0) return res.status(404).json({ error: 'Categoria não encontrada' });
+    res.json({ message: 'Categoria excluída com sucesso' });
   });
 });
 

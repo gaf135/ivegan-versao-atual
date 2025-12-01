@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - iVegan</title>
+    <title>Cadastro de Restaurante - iVegan</title>
 
     <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
@@ -20,49 +20,48 @@
 
     <main class="main-content container">
         <div class="auth-container">
-            <form id="registerForm" class="auth-form">
+            <form id="registerRestauranteForm" class="auth-form">
                 <div class="auth-header">
-                    <h1>Crie sua conta</h1>
-                    <p>Preencha seus dados para começar</p>
+                    <h1>Cadastre seu Restaurante</h1>
+                    <p>Junte-se ao iVegan e expanda seu negócio</p>
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Nome Completo *</label>
-                    <input type="text" id="nome" name="nome" required>
-                    <span class="error-message" id="nomeError"></span>
+                    <label for="nomePublico">Nome Público *</label>
+                    <input type="text" id="nomePublico" name="nomePublico" required
+                        placeholder="Nome fantasia do restaurante">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                    <span class="error-message" id="emailError"></span>
+                    <label for="nomeLegal">Razão Social *</label>
+                    <input type="text" id="nomeLegal" name="nomeLegal" required placeholder="Razão social da empresa">
                 </div>
 
                 <div class="form-row" style="display: flex; gap: 15px;">
                     <div class="form-group" style="flex: 1;">
-                        <label for="telefone">Telefone</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
-                        <span class="error-message" id="telefoneError"></span>
+                        <label for="cnpj">CNPJ *</label>
+                        <input type="text" id="cnpj" name="cnpj" required placeholder="00.000.000/0000-00">
                     </div>
 
                     <div class="form-group" style="flex: 1;">
-                        <label for="senha">Senha *</label>
-                        <input type="password" id="senha" name="senha" required minlength="6">
-                        <span class="error-message" id="senhaError"></span>
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirmarSenha">Confirmar Senha *</label>
-                    <input type="password" id="confirmarSenha" name="confirmarSenha" required>
-                    <span class="error-message" id="confirmarSenhaError"></span>
+                    <label for="categoria">Categoria *</label>
+                    <select id="categoria" name="categoria" required
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        <option value="restaurante">Restaurante</option>
+                        <option value="mercado">Mercado</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="endereco">Endereço</label>
-                    <textarea id="endereco" name="endereco" rows="3"
-                        placeholder="Digite seu endereço completo..."></textarea>
-                    <span class="error-message" id="enderecoError"></span>
+                    <label for="endereco">Endereço Completo *</label>
+                    <textarea id="endereco" name="endereco" rows="3" required
+                        placeholder="Rua, número, bairro, cidade, estado..."></textarea>
                 </div>
 
                 <div class="form-group checkbox-group">
@@ -71,17 +70,16 @@
                         Concordo com os <a href="/termos" target="_blank">Termos de Uso</a> e
                         <a href="/privacidade" target="_blank">Política de Privacidade</a> *
                     </label>
-                    <span class="error-message" id="termosError"></span>
                 </div>
 
                 <button type="submit" class="btn-primary" id="submitBtn">
-                    Criar Conta
+                    Cadastrar Restaurante
                 </button>
 
                 <div id="message" class="message"></div>
 
                 <p class="auth-link">
-                    Já tem uma conta? <a href="login.html">Faça login aqui</a>
+                    Já tem cadastro? <a href="login.html">Faça login aqui</a>
                 </p>
             </form>
         </div>
@@ -89,7 +87,7 @@
 
     <div id="footer-container"></div>
 
-    <script src="js/register.js"></script>
+    <script src="js/register-restaurante.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/auth-navbar.js"></script>
 </body>

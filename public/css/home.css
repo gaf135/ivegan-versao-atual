@@ -6,28 +6,28 @@
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(32, 90, 0, 0.4);
   }
-  
+
   .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
   }
-  
+
   .carousel-slide {
     min-width: 100%;
     display: none;
   }
-  
+
   .carousel-slide.active {
     display: block;
   }
-  
+
   .carousel-slide img {
     width: 100%;
     height: 400px;
     object-fit: cover;
     display: block;
   }
-  
+
   .carousel-prev,
   .carousel-next {
     position: absolute;
@@ -42,20 +42,20 @@
     border-radius: 50%;
     transition: background 0.3s;
   }
-  
+
   .carousel-prev:hover,
   .carousel-next:hover {
     background: rgba(32, 90, 0, 0.9);
   }
-  
+
   .carousel-prev {
     left: 10px;
   }
-  
+
   .carousel-next {
     right: 10px;
   }
-  
+
   .carousel-indicators {
     position: absolute;
     bottom: 15px;
@@ -64,7 +64,7 @@
     display: flex;
     gap: 10px;
   }
-  
+
   .indicator {
     width: 12px;
     height: 12px;
@@ -73,29 +73,29 @@
     cursor: pointer;
     transition: background 0.3s;
   }
-  
+
   .indicator.active {
     background: #205a00;
   }
 
-  .cards-me{
+  .cards-me {
     display: flex;
     flex-direction: column;
-    justify-content: center;  
+    justify-content: center;
     align-items: center;
     padding: 80px;
     padding-top: 40px;
     gap: 30px;
   }
 
-  .card-mercado{
+  .card-mercado {
     display: flex;
     background-color: rgba(255, 255, 255, 0.356);
     border-radius: 5px;
     box-shadow: 0 0 10px 5px #205a00a8;
   }
-  
-  .card-mercado-left{
+
+  .card-mercado-left {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,7 +105,7 @@
     gap: 35px;
   }
 
-  .card-mercado-left img{
+  .card-mercado-left img {
     display: flex;
     padding: 25px;
     gap: 35px;
@@ -125,12 +125,12 @@
     cursor: pointer;
   }
 
-  .card-mercado-left h1{
+  .card-mercado-left h1 {
     padding: 10px;
     margin: 0%;
   }
 
-  .card-mercado-left-items{
+  .card-mercado-left-items {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,7 +138,7 @@
     gap: 90px;
   }
 
-  .card-mercado-right{
+  .card-mercado-right {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,11 +147,11 @@
     font-weight: 300;
   }
 
-  .card-mercado-right h1{
+  .card-mercado-right h1 {
     margin: 0;
   }
 
-  .card-entrega{
+  .card-entrega {
     display: flex;
     justify-content: end;
     background-color: rgba(255, 255, 255, 0.356);
@@ -159,7 +159,7 @@
     box-shadow: 0 0 10px 5px #205a00a8;
   }
 
-  .card-entrega-left{
+  .card-entrega-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -168,21 +168,21 @@
     font-weight: 300;
   }
 
-  .card-entrega-left h1{
+  .card-entrega-left h1 {
     margin: 0;
   }
 
-  .card-entrega-right{
+  .card-entrega-right {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:rgb(253, 75, 75);
+    background-color: rgb(253, 75, 75);
     color: white;
     border-radius: 5px;
     gap: 35px;
   }
 
-  .card-entrega-right img{
+  .card-entrega-right img {
     display: flex;
     padding: 35px;
     gap: 35px;
@@ -202,12 +202,12 @@
     cursor: pointer;
   }
 
-  .card-entrega-right h1{
+  .card-entrega-right h1 {
     padding: 10px;
     margin: 0%;
   }
 
-  .card-entrega-right-items{
+  .card-entrega-right-items {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -215,124 +215,142 @@
     gap: 90px;
   }
 
-  .cards-re{
+  .cards-re {
     display: flex;
-    justify-content: center;  
+    justify-content: center;
     align-items: center;
     padding: 80px;
     gap: 30px;
   }
 
-  .card-restaurante{
+  .card-restaurante {
     display: flex;
     flex-direction: column;
-    color: white;    
+    color: white;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    gap: 200px;
-    width: 445px;
+    gap: 20px;
+    width: 450px;
+    height: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px #205a00a8;
+    background-color: rgba(255, 255, 255, 0.356);
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 
-  .card-restaurante h1{
+  .card-restaurante:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 15px 30px rgba(32, 90, 0, 0.6);
+  }
+
+  .card-restaurante:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(32, 90, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+
+  .card-restaurante h1 {
     color: white;
     text-decoration: none;
-    text-shadow: 
-    -1px -1px 0 #205a00,
-     1px -1px 0 #205a00,
-    -1px  1px 0 #205a00,
-     1px  1px 0 #205a00;
+    text-shadow:
+      -1px -1px 0 #205a00,
+      1px -1px 0 #205a00,
+      -1px 1px 0 #205a00,
+      1px 1px 0 #205a00;
     text-align: center;
+    margin-top: 10%;
   }
 
-  .card-restaurante p {
-    text-align: center;
-    padding: 10px;
-  }
-
-  .card-restaurante-texto{
-    background-color: rgba(255, 255, 255, 0.356);
-    border-radius: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    box-shadow: 0 5px 10px 5px #205a00;
-  }
-
-  .card-entregador{
+  .card-entregador {
     display: flex;
     flex-direction: column;
-    color: white;    
+    color: white;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    gap: 200px;
-    width: 445px; 
+    gap: 20px;
+    width: 450px;
+    height: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px #205a00a8;
+    background-color: rgba(255, 255, 255, 0.356);
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 
-  .card-entregador h1{
+  .card-entregador:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 15px 30px rgba(32, 90, 0, 0.6);
+  }
+
+  .card-entregador:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(32, 90, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+
+  .card-entregador h1 {
     color: white;
     text-decoration: none;
-    text-shadow: 
-    -1px -1px 0 #205a00,
-     1px -1px 0 #205a00,
-    -1px  1px 0 #205a00,
-     1px  1px 0 #205a00;
+    text-shadow:
+      -1px -1px 0 #205a00,
+      1px -1px 0 #205a00,
+      -1px 1px 0 #205a00,
+      1px 1px 0 #205a00;
     text-align: center;
+    margin-top: 10%;
   }
 
-  .card-entregador p {
-    text-align: center;
-    padding: 10px;
-  }
-
-  .card-entregador-texto{
-    background-color: rgba(255, 255, 255, 0.356);
-    border-radius: 10px;
-    border-top-left-radius: 0 ;
-    border-top-right-radius: 0;
-    box-shadow: 0 5px 10px 5px #205a00;
+  .card-link {
+    text-decoration: none;
   }
 
   @media (max-width: 768px) {
     .carousel-simple {
-        margin: 20px;
+      margin: 20px;
     }
-    
+
     .carousel-slide img {
-        height: 300px;
+      height: 300px;
     }
-    
+
     .carousel-prev,
     .carousel-next {
-        padding: 8px 12px;
-        font-size: 18px;
+      padding: 8px 12px;
+      font-size: 18px;
     }
   }
 
-  .slider-title{
+  .slider-title {
     margin: 0px;
     padding: 0 35px;
     color: #fff;
-    text-shadow: 
-    -1px -1px 0 #205a00,
-     1px -1px 0 #205a00,
-    -1px  1px 0 #205a00,
-     1px  1px 0 #205a00;
+    text-shadow:
+      -1px -1px 0 #205a00,
+      1px -1px 0 #205a00,
+      -1px 1px 0 #205a00,
+      1px 1px 0 #205a00;
+    text-align: center;
+    margin-bottom: 20px;
   }
-  
-  .wrapper-container{
+
+  .wrapper-container {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 35px;
   }
-  
-  .wrapper{
+
+  .wrapper {
     max-width: 1100px;
     width: 100%;
     position: relative;
   }
-  
+
   .wrapper .card-carousel {
     display: grid;
     grid-auto-flow: column;
@@ -340,20 +358,20 @@
     gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding: 0px 0px 15px;
+    padding: 25px 0px 15px;
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color:  #205a0085 #ffffff00;
+    scrollbar-color: #205a0085 #ffffff00;
   }
-  
-  .card-carousel :where(.card, .img){
+
+  .card-carousel :where(.card, .img) {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
   }
-  
-  .card-carousel .card{
+
+  .card-carousel .card {
     height: 300px;
     width: auto;
     list-style: none;
@@ -364,91 +382,92 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: transform 0.3s ease;
   }
-  
+
   .card-carousel .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
-  
-  
+
+
   .card .img {
     background: #205a00;
     width: 148px;
     height: 148px;
     border-radius: 50%;
   }
-  
-  .card .img img{
+
+  .card .img img {
     width: 140px;
     height: 140px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #fff;
   }
-  
-  .card h2{
+
+  .card h2 {
     font-weight: 500;
     font-size: 1.56rem;
     margin: 30px 0 5px;
   }
-  
-  .card span{
+
+  .card span {
     color: #a3a3a3;
     font-size: 1.31rem;
   }
-  
+
   @media (max-width: 768px) {
     .wrapper {
-        padding: 0 35px;
+      padding: 0 35px;
     }
-  
+
     .wrapper i {
-        height: 40px;
-        width: 40px;
-        line-height: 40px;
-        font-size: 1rem;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      font-size: 1rem;
     }
-  
+
     .wrapper i:first-child {
-        left: -20px;
+      left: -20px;
     }
-  
+
     .wrapper i:last-child {
-        right: -20px;
+      right: -20px;
     }
-  
+
     .wrapper .card-carousel {
-        grid-auto-columns: calc((100% / 2) - 10px);
-        gap: 15px;
+      grid-auto-columns: calc((100% / 2) - 10px);
+      gap: 15px;
     }
   }
-  
+
   @media (max-width: 480px) {
     .wrapper .card-carousel {
-        grid-auto-columns: 100%;
-        gap: 15px;
+      grid-auto-columns: 100%;
+      gap: 15px;
     }
   }
 
   @media (max-width: 1030px) {
-    .card-entrega-left{
+    .card-entrega-left {
       display: none;
     }
 
-    .card-mercado-right{
+    .card-mercado-right {
       display: none;
     }
 
-    .cards-me{
+    .cards-me {
       display: flex;
     }
 
   }
 
-@media (max-width: 950px){
-  .cards-re{
-    display: flex;
-    flex-direction: column;
+  @media (max-width: 950px) {
+    .cards-re {
+      display: flex;
+      flex-direction: column;
+    }
   }
-}
